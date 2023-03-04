@@ -18,16 +18,24 @@ public class GameWorld extends World {
         // make the shape for the platforms
         Shape platform = new BoxShape(3,0.5f);
         // add platforms, give them positions and add images to them
+        StaticBody platform1 = new StaticBody(this, platform);
+        platform1.setPosition(new Vec2(8, 3f));
+        platform1.addImage(new BodyImage("./data/platform.png", 1f));
+
         StaticBody platform2 = new StaticBody(this, platform);
-        platform2.setPosition(new Vec2(8, 3f));
+        platform2.setPosition(new Vec2(-8, 3f));
         platform2.addImage(new BodyImage("./data/platform.png", 1f));
 
         StaticBody platform3 = new StaticBody(this, platform);
-        platform3.setPosition(new Vec2(-8, 3f));
+        platform3.setPosition(new Vec2(-3, -5f));
         platform3.addImage(new BodyImage("./data/platform.png", 1f));
 
+        StaticBody platform4 = new StaticBody(this, platform);
+        platform4.setPosition(new Vec2(3, -5f));
+        platform4.addImage(new BodyImage("./data/platform.png", 1f));
+
        cowbo = new Cowbo(this);
-       cowbo.setPosition(new Vec2(8, -10));
+       cowbo.setPosition(new Vec2(0, 2));
 
     }
 
