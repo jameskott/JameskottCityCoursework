@@ -5,7 +5,7 @@ import org.jbox2d.common.Vec2;
 
 public class GameWorld extends World {
 
-    private Cowbo student;
+    private Cowbo cowbo;
 
     public GameWorld(){
 
@@ -26,14 +26,12 @@ public class GameWorld extends World {
         platform3.setPosition(new Vec2(-8, 3f));
         platform3.addImage(new BodyImage("./data/platform.png", 1f));
 
-       student = new Cowbo(this);
-       student.setPosition(new Vec2(8, -10));
+       cowbo = new Cowbo(this);
+       cowbo.setPosition(new Vec2(8, -10));
 
-       new Books(this).setPosition(new Vec2(-9.5f,3));
-       new Books(this).setPosition(new Vec2(12,2));
     }
 
     public Cowbo getStudent(){
-        return student;
+        return cowbo;
     }
 }
