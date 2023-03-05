@@ -34,7 +34,7 @@ public class Game {
         view.addMouseListener(new GiveFocus(view));
 
         // add the view to a frame (Java top level window)
-        final JFrame frame = new JFrame("Degree Quest");
+        final JFrame frame = new JFrame("Cowbo2");
         frame.add(view);
         // enable the frame to quit the application
         // when the x button is pressed

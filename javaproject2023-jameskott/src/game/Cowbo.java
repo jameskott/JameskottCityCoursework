@@ -6,7 +6,7 @@ public class Cowbo extends Walker {
     private static final Shape studentShape = new PolygonShape(
             1.12f,1.81f, 1.08f,-1.7f, -1.08f,-1.72f, -1.27f,1.81f);
 
-    private static final BodyImage studentImage =
+    private static final BodyImage cowboImage =
             new BodyImage("data/cowbostill.png", 4.5f);
 
     private int credits;
@@ -15,7 +15,7 @@ public class Cowbo extends Walker {
 
     public Cowbo(World world) {
         super(world, studentShape);
-        addImage(studentImage);
+        addImage(cowboImage);
 
         credits = 0;
         books = 0;
