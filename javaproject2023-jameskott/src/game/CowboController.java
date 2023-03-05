@@ -12,6 +12,7 @@ public class CowboController implements KeyListener {
     //set the characters walk speed
     private static float walk_speed = 6;
 
+    private int super_jump = 0;
 
     private Cowbo cowbo;
 

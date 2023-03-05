@@ -51,6 +51,11 @@ public class GameWorld extends World {
         portal2.setPosition(new Vec2(12.5f, -13f));
         portal2.addImage((new BodyImage("./data/portal.png", 2f)));
 
+        new Coin(this).setPosition(new Vec2(-10,4));
+        new Coin(this).setPosition(new Vec2(8, -3));
+
+        new Slime(this).setPosition(new Vec2(-5,-8));
+        new Slime(this).setPosition(new Vec2(6, -8));
 
         cowbo = new Cowbo(this);
         cowbo.setPosition(new Vec2(0, 2));
