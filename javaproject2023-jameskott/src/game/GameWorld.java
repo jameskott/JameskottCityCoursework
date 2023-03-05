@@ -42,6 +42,14 @@ public class GameWorld extends World {
         wall2.setPosition(new Vec2(-14.5f, 0f));
         wall2.addImage(new BodyImage("./data/wall.png", 30f));
 
+        Shape portal = new PolygonShape(-0.07f,1.9f, -0.91f,-1.77f, 0.8f,-1.73f
+        );
+        StaticBody portal1 = new StaticBody(this, portal);
+        portal1.setPosition(new Vec2(-11.5f, 2f));
+        portal1.addImage((new BodyImage("./data/portal.png", 2f)));
+        StaticBody portal2 = new StaticBody(this, portal);
+        portal2.setPosition(new Vec2(12.5f, -13f));
+        portal2.addImage((new BodyImage("./data/portal.png", 2f)));
 
 
         cowbo = new Cowbo(this);
@@ -50,7 +58,7 @@ public class GameWorld extends World {
 
     }
 
-    public Cowbo getStudent(){
+    public Cowbo getCowbo(){
         return cowbo;
     }
 }

@@ -26,7 +26,7 @@ public class Game {
         // make a view
         view = new GameView(world, 600, 600);
 
-        CowboController controller = new CowboController(world.getStudent());
+        CowboController controller = new CowboController(world.getCowbo());
         view.addKeyListener(controller);
 
 
@@ -34,7 +34,7 @@ public class Game {
         view.addMouseListener(new GiveFocus(view));
 
         // add the view to a frame (Java top level window)
-        final JFrame frame = new JFrame("Cowbo2");
+        final JFrame frame = new JFrame("Cowbo");
         frame.add(view);
         // enable the frame to quit the application
         // when the x button is pressed

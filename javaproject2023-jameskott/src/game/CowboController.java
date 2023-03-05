@@ -29,8 +29,10 @@ public class CowboController implements KeyListener {
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_LEFT) {
             cowbo.startWalking(-walk_speed);
+            Cowbo.setCowboImage(new BodyImage("data/cowboleftgun.png", 4.5f));
         } else if (code == KeyEvent.VK_RIGHT) {
             cowbo.startWalking(walk_speed);
+            Cowbo.setCowboImage(new BodyImage("data/cowborightgun.png", 4.5f));
         }
         else if (code == KeyEvent.VK_UP){
             cowbo.jump(12);
@@ -45,8 +47,10 @@ public class CowboController implements KeyListener {
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_LEFT) {
             cowbo.stopWalking();
+            Cowbo.setCowboImage(new BodyImage("data/cowbostill.png", 4.5f));
         } else if (code ==   KeyEvent.VK_RIGHT) {
             cowbo.stopWalking();
+            Cowbo.setCowboImage(new BodyImage("data/cowbostill.png", 4.5f));
         }
         else if (code == KeyEvent.VK_SHIFT){
             this.walk_speed = 6;
