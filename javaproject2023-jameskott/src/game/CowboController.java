@@ -9,11 +9,12 @@ import java.util.HashMap;
 
 public class CowboController implements KeyListener {
 
-    private static final float WALKING_SPEED = 3;
+    //set the characters walk speed
+    private static float walk_speed = 6;
+
 
     private Cowbo cowbo;
 
-    private HashMap<Body, BodyImage> hiddenImages = null;
 
     public CowboController(Cowbo s){
         cowbo = s;
@@ -26,14 +27,16 @@ public class CowboController implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
-        // other key commands omitted
         if (code == KeyEvent.VK_LEFT) {
-            cowbo.startWalking(-WALKING_SPEED);
+            cowbo.startWalking(-walk_speed);
         } else if (code == KeyEvent.VK_RIGHT) {
-            cowbo.startWalking(WALKING_SPEED*2);
+            cowbo.startWalking(walk_speed);
         }
         else if (code == KeyEvent.VK_UP){
             cowbo.jump(12);
+        }
+        else if (code == KeyEvent.VK_SHIFT){
+            this.walk_speed = 9;
         }
     }
 
@@ -44,6 +47,9 @@ public class CowboController implements KeyListener {
             cowbo.stopWalking();
         } else if (code ==   KeyEvent.VK_RIGHT) {
             cowbo.stopWalking();
+        }
+        else if (code == KeyEvent.VK_SHIFT){
+            this.walk_speed = 6;
         }
     }
 }

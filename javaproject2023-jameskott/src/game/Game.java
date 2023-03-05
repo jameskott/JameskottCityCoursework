@@ -31,7 +31,7 @@ public class Game {
 
 
        // world.addStepListener(new Tracker(view, world.getStudent()));
-
+        view.addMouseListener(new GiveFocus(view));
 
         // add the view to a frame (Java top level window)
         final JFrame frame = new JFrame("Degree Quest");
