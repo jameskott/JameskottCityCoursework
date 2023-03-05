@@ -29,7 +29,6 @@ public class Game {
         CowboController controller = new CowboController(world.getStudent());
         view.addKeyListener(controller);
 
-        view.addMouseListener(new GiveFocus(view));
 
        // world.addStepListener(new Tracker(view, world.getStudent()));
 
