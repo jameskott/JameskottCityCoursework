@@ -12,9 +12,9 @@ public class CowboController implements KeyListener {
     //set the characters walk speed
     private static float walk_speed = 6;
 
-    private int super_jump = 0;
+    private final int super_jump = 0;
 
-    private Cowbo cowbo;
+    private final Cowbo cowbo;
 
 
     public CowboController(Cowbo s){
@@ -36,10 +36,10 @@ public class CowboController implements KeyListener {
             Cowbo.setCowboImage(new BodyImage("data/cowborightgun.png", 4.5f));
         }
         else if (code == KeyEvent.VK_UP){
-            cowbo.jump(12);
+            cowbo.jump(14);
         }
         else if (code == KeyEvent.VK_SHIFT){
-            this.walk_speed = 9;
+            walk_speed = 9;
         }
     }
 
@@ -54,7 +54,7 @@ public class CowboController implements KeyListener {
             Cowbo.setCowboImage(new BodyImage("data/cowbostill.png", 4.5f));
         }
         else if (code == KeyEvent.VK_SHIFT){
-            this.walk_speed = 6;
+            walk_speed = 6;
         }
     }
 }

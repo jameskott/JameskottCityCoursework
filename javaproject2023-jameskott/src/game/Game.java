@@ -12,7 +12,7 @@ public class Game {
     private GameWorld world;
 
     /** A graphical display of the world (a specialised JPanel). */
-    private GameView view;
+    private final GameView view;
 
     private SoundClip gameMusic;
 
@@ -32,6 +32,8 @@ public class Game {
 
        // world.addStepListener(new Tracker(view, world.getStudent()));
         view.addMouseListener(new GiveFocus(view));
+
+        //adding event listeners
 
         // add the view to a frame (Java top level window)
         final JFrame frame = new JFrame("Cowbo");
