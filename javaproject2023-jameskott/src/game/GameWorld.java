@@ -2,12 +2,21 @@ package game;
 
 import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
+import java.util.Random;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class GameWorld extends World {
+public class GameWorld extends World implements ActionListener {
 
     private final Cowbo cowbo;
 
+
+
     public GameWorld(){
+
+        //random generator for coords
+        generateRandom random = new generateRandom();
 
       // make the ground
         Shape shape = new BoxShape(30, 0.5f);
@@ -75,7 +84,11 @@ public class GameWorld extends World {
         s1.setName("slime");
         Slime s2 = new Slime(this);
         s2.setPosition(new Vec2(6, -8));
-        s2.setName("slime");
+        s2.setName("slime") ;
+
+        Timer timer = new Timer(10000, this);
+        timer.setInitialDelay(100);
+        timer.start();
 
 
         cowbo = new Cowbo(this);
@@ -96,5 +109,12 @@ public class GameWorld extends World {
 
     public Cowbo getCowbo(){
         return cowbo;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Vec2 coord = new Vec2(generateRandom.main(),generateRandom.main());
+        Coin c = new Coin(this);
+        c.setPosition(coord);
     }
 }

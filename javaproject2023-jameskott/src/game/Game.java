@@ -2,7 +2,8 @@ package game;
 
 import city.cs.engine.*;
 
-import javax.swing.JFrame;
+import javax.swing.*;
+
 /**
  * A world with some bodies.
  */
@@ -54,6 +55,8 @@ public class Game {
 
         // start our game world simulation!
         world.start();
+
+
     }
 
     /** Run the game. */
