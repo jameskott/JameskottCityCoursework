@@ -4,6 +4,16 @@ import city.cs.engine.*;
 
 public class Cowbo extends Walker {
 
+    private boolean immune;
+
+    public boolean isImmune() {
+        return immune;
+    }
+
+    public void setImmune(boolean immune) {
+        this.immune = immune;
+    }
+
     private int lives;
 
     public int getLives() {
@@ -59,6 +69,7 @@ public class Cowbo extends Walker {
         super(world, cowboShape);
         addImage(cowboImage);
         this.lives = 3;
+        this.immune = false;
     }
 
 
