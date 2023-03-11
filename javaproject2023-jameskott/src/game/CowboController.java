@@ -2,19 +2,25 @@ package game;
 
 import city.cs.engine.BodyImage;
 
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class CowboController implements KeyListener {
 
-    private final int super_jump = 0;
+    private final int super_jump = 16;
 
-    private final Cowbo cowbo;
+    private Cowbo cowbo;
 
+    SuperJump superJump;
+    Timer timer;
 
     public CowboController(Cowbo s){
-        cowbo = s;
+        this.cowbo = s;
+        superJump = new SuperJump(s);
+        this.timer = new Timer(2500, superJump);
     }
+
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -31,7 +37,9 @@ public class CowboController implements KeyListener {
             Cowbo.setCowboImage(new BodyImage("data/cowborightgun.png", 4.5f));
         }
         else if (code == KeyEvent.VK_UP){
-            cowbo.jump(14);
+            System.out.println(cowbo.isSuperJump());
+            timer.setRepeats(false);
+            timer.start();
         }
         else if (code == KeyEvent.VK_SHIFT){
             Cowbo.setWalk_speed(9);
@@ -50,6 +58,17 @@ public class CowboController implements KeyListener {
         }
         else if (code == KeyEvent.VK_SHIFT){
             Cowbo.setWalk_speed(6);
+        } else if (code == KeyEvent.VK_UP){
+            timer.stop();
+            if(cowbo.isSuperJump()){
+                System.out.println(cowbo.isSuperJump());
+                cowbo.jump(18);
+                cowbo.setSuperJump(false);
+                System.out.println(cowbo.isSuperJump());
+                System.out.println("SUPER JUMP");
+            } else{
+                cowbo.jump(13);
+            }
         }
     }
 }

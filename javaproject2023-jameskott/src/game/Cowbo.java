@@ -4,6 +4,15 @@ import city.cs.engine.*;
 
 public class Cowbo extends Walker {
 
+    public boolean isSuperJump() {
+        return superJump;
+    }
+
+    public void setSuperJump(boolean superJump) {
+        this.superJump = superJump;
+    }
+
+    private boolean superJump;
     private boolean immune;
 
     public boolean isImmune() {
@@ -68,7 +77,7 @@ public class Cowbo extends Walker {
     public Cowbo(World world) {
         super(world, cowboShape);
         addImage(cowboImage);
-        this.lives = 3;
+        this.lives = 5;
         this.immune = false;
     }
 

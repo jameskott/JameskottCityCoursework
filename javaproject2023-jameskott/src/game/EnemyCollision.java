@@ -5,18 +5,18 @@ import city.cs.engine.CollisionListener;
 
 import javax.swing.*;
 
-public class SlimeCollision implements CollisionListener {
+public class EnemyCollision implements CollisionListener {
     private Cowbo cowbo;
 
-    public SlimeCollision(Cowbo cowbo) {
+    public EnemyCollision(Cowbo cowbo) {
         this.cowbo = cowbo;
     }
 
     @Override
     public void collide(CollisionEvent collisionEvent) {
-        if(collisionEvent.getOtherBody() instanceof Cowbo){
+        if(collisionEvent.getOtherBody() instanceof Enemy){
             if(cowbo.isImmune() == false) {
-                this.cowbo.loseLife();
+                ((Enemy) collisionEvent.getOtherBody()).damage(cowbo);
                 cowbo.setImmune(true);
                 ImmuneTimer immuneTimer = new ImmuneTimer(cowbo);
                 Timer timer = new Timer(3000, immuneTimer);
@@ -25,7 +25,7 @@ public class SlimeCollision implements CollisionListener {
                 System.out.println(cowbo.getLives());
             }
         }
-        if(cowbo.getLives() == 0){
+        if(cowbo.getLives() <= 0){
             System.exit(0);
         }
     }

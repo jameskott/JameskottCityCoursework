@@ -2,7 +2,7 @@ package game;
 
 import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
-import java.util.Random;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -90,6 +90,9 @@ public class GameWorld extends World implements ActionListener {
         Slime s2 = new Slime(this);
         s2.setPosition(new Vec2(6, -8));
         s2.setName("slime") ;
+        Spider spider1 = new Spider(this);
+        spider1.setPosition(new Vec2(5,8));
+        spider1.setName("spider");
 
         Timer timer = new Timer(10000, this);
         timer.setInitialDelay(100);
@@ -106,9 +109,8 @@ public class GameWorld extends World implements ActionListener {
         CoinPickup coinPickup = new CoinPickup(cowbo);
         cowbo.addCollisionListener(coinPickup);
 
-        SlimeCollision slimeCollision = new SlimeCollision(cowbo);
-        s1.addCollisionListener(slimeCollision);
-        s2.addCollisionListener(slimeCollision);
+        EnemyCollision enemyCollision = new EnemyCollision(cowbo);
+        cowbo.addCollisionListener(enemyCollision);
 
         PortalTouch pt = new PortalTouch();
         p1.addCollisionListener(pt);

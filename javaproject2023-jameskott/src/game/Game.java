@@ -4,37 +4,33 @@ import city.cs.engine.*;
 
 import javax.swing.*;
 
-/**
- * A world with some bodies.
- */
+
 public class Game {
 
-    /** The World in which the bodies move and interact. */
     private GameWorld world;
 
-    /** A graphical display of the world (a specialised JPanel). */
+    // A graphical display of the world
     private final GameView view;
 
     private SoundClip gameMusic;
 
 
-    /** Initialise a new Game. */
+    // Initialise a new Game
     public Game() {
 
         // make the world
         GameWorld world = new GameWorld();
 
         // make a view
-        view = new GameView(world, 600, 600);
+        view = new GameView(world, 600, 600, world.getCowbo());
 
+        //Add controls to cowbo
         CowboController controller = new CowboController(world.getCowbo());
         view.addKeyListener(controller);
 
-
-       // world.addStepListener(new Tracker(view, world.getStudent()));
+        //adding step and mouse listeners
         view.addMouseListener(new GiveFocus(view));
-
-        //adding event listeners
+        world.addStepListener(new Display(view, world.getCowbo()));
 
         // add the view to a frame (Java top level window)
         final JFrame frame = new JFrame("Cowbo");
@@ -59,7 +55,6 @@ public class Game {
 
     }
 
-    /** Run the game. */
     public static void main(String[] args) {
 
         new Game();
