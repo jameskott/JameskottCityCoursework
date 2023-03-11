@@ -4,9 +4,33 @@ import city.cs.engine.*;
 
 public class Cowbo extends Walker {
 
+    private int lives;
+
+    public int getLives() {
+        return lives;
+    }
+
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
+
+    //set the characters walk speed
+    private static float walk_speed = 6;
     private int coins;
     private static final Shape cowboShape = new PolygonShape(
             1.12f,1.81f, 1.08f,-1.7f, -1.08f,-1.72f, -1.27f,1.81f);
+
+    public static float getWalk_speed() {
+        return walk_speed;
+    }
+
+    public static void setWalk_speed(float walk_speed) {
+        Cowbo.walk_speed = walk_speed;
+    }
+
+    public void loseLife(){
+        this.setLives(this.getLives()-1);
+    }
 
 
     public int getCoins() {
@@ -34,6 +58,7 @@ public class Cowbo extends Walker {
     public Cowbo(World world) {
         super(world, cowboShape);
         addImage(cowboImage);
+        this.lives = 3;
     }
 
 

@@ -18,7 +18,11 @@ public class GameWorld extends World implements ActionListener {
         //random generator for coords
         generateRandom random = new generateRandom();
 
-      // make the ground
+        cowbo = new Cowbo(this);
+        cowbo.setPosition(new Vec2(0, 2));
+
+
+        // make the ground
         Shape shape = new BoxShape(30, 0.5f);
         StaticBody ground = new StaticBody(this, shape);
         ground.setPosition(new Vec2(0f, -15f));
@@ -47,7 +51,8 @@ public class GameWorld extends World implements ActionListener {
         StaticBody platform4 = new StaticBody(this, platform);
         platform4.setPosition(new Vec2(3, -8f));
         platform4.addImage(new BodyImage("./data/platform.png", 1f));
-        platform4.setName("platform4");
+        platform4.setName("platform3");
+
 
 
         Shape wall = new BoxShape(0.5f, 30f);
@@ -91,8 +96,7 @@ public class GameWorld extends World implements ActionListener {
         timer.start();
 
 
-        cowbo = new Cowbo(this);
-        cowbo.setPosition(new Vec2(0, 2));
+
 
         //GenericCollisionListener gcl = new GenericCollisionListener();
         //cowbo.addCollisionListener(gcl);
@@ -101,6 +105,10 @@ public class GameWorld extends World implements ActionListener {
 
         CoinPickup coinPickup = new CoinPickup(cowbo);
         cowbo.addCollisionListener(coinPickup);
+
+        SlimeCollision slimeCollision = new SlimeCollision(cowbo);
+        s1.addCollisionListener(slimeCollision);
+        s2.addCollisionListener(slimeCollision);
 
         PortalTouch pt = new PortalTouch();
         p1.addCollisionListener(pt);

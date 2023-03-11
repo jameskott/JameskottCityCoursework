@@ -1,16 +1,11 @@
 package game;
 
-import city.cs.engine.Body;
 import city.cs.engine.BodyImage;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.HashMap;
 
 public class CowboController implements KeyListener {
-
-    //set the characters walk speed
-    private static float walk_speed = 6;
 
     private final int super_jump = 0;
 
@@ -29,17 +24,17 @@ public class CowboController implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_LEFT) {
-            cowbo.startWalking(-walk_speed);
+            cowbo.startWalking(-Cowbo.getWalk_speed());
             Cowbo.setCowboImage(new BodyImage("data/cowboleftgun.png", 4.5f));
         } else if (code == KeyEvent.VK_RIGHT) {
-            cowbo.startWalking(walk_speed);
+            cowbo.startWalking(Cowbo.getWalk_speed());
             Cowbo.setCowboImage(new BodyImage("data/cowborightgun.png", 4.5f));
         }
         else if (code == KeyEvent.VK_UP){
             cowbo.jump(14);
         }
         else if (code == KeyEvent.VK_SHIFT){
-            walk_speed = 9;
+            Cowbo.setWalk_speed(9);
         }
     }
 
@@ -54,7 +49,7 @@ public class CowboController implements KeyListener {
             Cowbo.setCowboImage(new BodyImage("data/cowbostill.png", 4.5f));
         }
         else if (code == KeyEvent.VK_SHIFT){
-            walk_speed = 6;
+            Cowbo.setWalk_speed(6);
         }
     }
 }
