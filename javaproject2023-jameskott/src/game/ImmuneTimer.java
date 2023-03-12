@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ImmuneTimer implements ActionListener {
-    private Cowbo cowbo;
+    private final Cowbo cowbo;
     public ImmuneTimer(Cowbo cowbo) {
         this.cowbo = cowbo;
     }

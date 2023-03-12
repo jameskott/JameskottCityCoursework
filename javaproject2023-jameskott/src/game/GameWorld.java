@@ -27,7 +27,7 @@ public class GameWorld extends World implements ActionListener {
         StaticBody ground = new StaticBody(this, shape);
         ground.setPosition(new Vec2(0f, -15f));
         ground.addImage(new BodyImage("./data/ground.png", 1f));
-        ground.setName("Ground");
+        ground.setName("ground");
 
         // make the shape for the platforms
         Shape platform = new BoxShape(3,0.5f);
@@ -35,23 +35,23 @@ public class GameWorld extends World implements ActionListener {
         StaticBody platform1 = new StaticBody(this, platform);
         platform1.setPosition(new Vec2(8, 0f));
         platform1.addImage(new BodyImage("./data/platform.png", 1f));
-        platform1.setName("platform1");
+        platform1.setName("platform");
 
         StaticBody platform2 = new StaticBody(this, platform);
         platform2.setPosition(new Vec2(-8, 0f));
         platform2.addImage(new BodyImage("./data/platform.png", 1f));
-        platform2.setName("platform2");
+        platform2.setName("platform");
 
         StaticBody platform3 = new StaticBody(this, platform);
         platform3.setPosition(new Vec2(-3, -8f));
         platform3.addImage(new BodyImage("./data/platform.png", 1f));
-        platform3.setName("platform3");
+        platform3.setName("platform");
 
 
         StaticBody platform4 = new StaticBody(this, platform);
         platform4.setPosition(new Vec2(3, -8f));
         platform4.addImage(new BodyImage("./data/platform.png", 1f));
-        platform4.setName("platform3");
+        platform4.setName("platform");
 
 
 
@@ -63,18 +63,18 @@ public class GameWorld extends World implements ActionListener {
         wall1.setName("wall");
         wall2.setPosition(new Vec2(-14.5f, 0f));
         wall2.addImage(new BodyImage("./data/wall.png", 30f));
-        wall2.setName("wall2");
+        wall2.setName("wall");
 
-        Portal p1 = new Portal(this);
-        p1.setPosition(new Vec2(-11.5f, 2f));
-        p1.setName("portal1");
-        Portal p2 = new Portal(this);
-        p2.setPosition(new Vec2(12.5f, -13f));
-        p2.setName("p2");
-        p1.setMatchingPortal(p2);
-        p2.setMatchingPortal(p1);
-        p1.setExitDirection(1);
-        p2.setExitDirection(0);
+        Portal portal1 = new Portal(this);
+        portal1.setPosition(new Vec2(-11.5f, 2f));
+        portal1.setName("portal");
+        Portal portal2 = new Portal(this);
+        portal2.setPosition(new Vec2(12.5f, -13f));
+        portal2.setName("portal");
+        portal1.setMatchingPortal(portal2);
+        portal2.setMatchingPortal(portal1);
+        portal1.setExitDirection(1);
+        portal2.setExitDirection(0);
 
 
         Coin c1 = new Coin(this);
@@ -84,20 +84,20 @@ public class GameWorld extends World implements ActionListener {
         c2.setPosition(new Vec2(8, -3));
         c2.setName("coin");
 
-        Slime s1 = new Slime(this);
-        s1.setPosition(new Vec2(-5,-8));
-        s1.setName("slime");
-        Slime s2 = new Slime(this);
-        s2.setPosition(new Vec2(6, -8));
-        s2.setName("slime") ;
+        Slime slime1 = new Slime(this);
+        slime1.setPosition(new Vec2(-5,-8));
+        slime1.setName("slime");
+        Slime slime2 = new Slime(this);
+        slime2.setPosition(new Vec2(6, -8));
+        slime2.setName("slime") ;
         Spider spider1 = new Spider(this);
-        spider1.setPosition(new Vec2(5,8));
+        spider1.setPosition(new Vec2(6.5f,9f));
         spider1.setName("spider");
+
 
         Timer timer = new Timer(10000, this);
         timer.setInitialDelay(100);
         timer.start();
-
 
 
 
@@ -111,10 +111,22 @@ public class GameWorld extends World implements ActionListener {
 
         EnemyCollision enemyCollision = new EnemyCollision(cowbo);
         cowbo.addCollisionListener(enemyCollision);
-
+        SlimeWallCollision slimeWallCollision = new SlimeWallCollision(slime1);
+        SlimeWallCollision slimeWallCollision2 = new SlimeWallCollision(slime2);
+        slime1.addCollisionListener(slimeWallCollision);
+        slime2.addCollisionListener(slimeWallCollision2);
         PortalTouch pt = new PortalTouch();
-        p1.addCollisionListener(pt);
-        p2.addCollisionListener(pt);
+        portal1.addCollisionListener(pt);
+        portal2.addCollisionListener(pt);
+
+
+        slime1.move();
+        slime2.move();
+        spider1.move();
+        cowbo.setName("cowbo");
+        this.addStepListener(new EnemyStepListen(slime1));
+        this.addStepListener(new EnemyStepListen(slime2));
+        this.addStepListener(new EnemyStepListen(spider1));
     }
 
     public Cowbo getCowbo(){
@@ -126,5 +138,6 @@ public class GameWorld extends World implements ActionListener {
         Vec2 coord = new Vec2(generateRandom.main(),generateRandom.main());
         Coin c = new Coin(this);
         c.setPosition(coord);
+        c.setName("coin");
     }
 }

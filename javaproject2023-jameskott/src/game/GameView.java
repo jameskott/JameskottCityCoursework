@@ -14,7 +14,7 @@ public class GameView extends UserView {
 
     private int coins;
     private String coinString;
-    private Cowbo cowbo;
+    private final Cowbo cowbo;
 
     public GameView(World w, int width, int height, Cowbo cowbo) {
         super(w, width, height);

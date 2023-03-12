@@ -6,7 +6,7 @@ import city.cs.engine.CollisionListener;
 import javax.swing.*;
 
 public class EnemyCollision implements CollisionListener {
-    private Cowbo cowbo;
+    private final Cowbo cowbo;
 
     public EnemyCollision(Cowbo cowbo) {
         this.cowbo = cowbo;
@@ -15,7 +15,7 @@ public class EnemyCollision implements CollisionListener {
     @Override
     public void collide(CollisionEvent collisionEvent) {
         if(collisionEvent.getOtherBody() instanceof Enemy){
-            if(cowbo.isImmune() == false) {
+            if(!cowbo.isImmune()) {
                 ((Enemy) collisionEvent.getOtherBody()).damage(cowbo);
                 cowbo.setImmune(true);
                 ImmuneTimer immuneTimer = new ImmuneTimer(cowbo);

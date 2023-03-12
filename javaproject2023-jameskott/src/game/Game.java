@@ -31,7 +31,6 @@ public class Game {
         //adding step and mouse listeners
         view.addMouseListener(new GiveFocus(view));
         world.addStepListener(new Display(view, world.getCowbo()));
-
         // add the view to a frame (Java top level window)
         final JFrame frame = new JFrame("Cowbo");
         frame.add(view);
@@ -46,12 +45,12 @@ public class Game {
         // finally, make the frame visible
         frame.setVisible(true);
 
+
         // uncomment this to make a debugging view
         //JFrame debugView = new DebugViewer(world, 500, 500);
 
         // start our game world simulation!
         world.start();
-
 
     }
 
@@ -59,4 +58,6 @@ public class Game {
 
         new Game();
     }
+
+
 }

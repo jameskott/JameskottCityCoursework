@@ -5,8 +5,8 @@ import city.cs.engine.StepListener;
 import org.jbox2d.common.Vec2;
 
 public class Display implements StepListener {
-    private GameView view;
-    private Cowbo cowbo;
+    private final GameView view;
+    private final Cowbo cowbo;
     public Display(GameView view, Cowbo cowbo) {
         this.view = view;
         this.cowbo = cowbo;

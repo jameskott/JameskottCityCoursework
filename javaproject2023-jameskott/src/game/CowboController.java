@@ -10,7 +10,7 @@ public class CowboController implements KeyListener {
 
     private final int super_jump = 16;
 
-    private Cowbo cowbo;
+    private final Cowbo cowbo;
 
     SuperJump superJump;
     Timer timer;
